@@ -42,4 +42,8 @@
 class TrackingUnit < ApplicationRecord
   belongs_to :brand
   belongs_to :project
+
+  def region
+    project.duty_free_location.region
+  end
 end
