@@ -11,4 +11,6 @@
 #
 
 class Brand < ApplicationRecord
+  belongs_to :brand_owner
+  has_many :tracking_units
 end

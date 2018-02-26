@@ -133,4 +133,6 @@
 #
 
 class Project < ApplicationRecord
+  belongs_to :duty_free_location
+  has_many :tracking_units
 end

@@ -40,4 +40,6 @@
 #
 
 class TrackingUnit < ApplicationRecord
+  belongs_to :brand
+  belongs_to :project
 end

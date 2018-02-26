@@ -17,4 +17,5 @@
 #
 
 class BrandOwner < ApplicationRecord
+  has_many :brands
 end
