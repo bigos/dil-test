@@ -1,0 +1,2 @@
+class FinanceDocument < ApplicationRecord
+end

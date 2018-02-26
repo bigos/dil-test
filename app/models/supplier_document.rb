@@ -1,0 +1,2 @@
+class SupplierDocument < ApplicationRecord
+end

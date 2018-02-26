@@ -1,0 +1,2 @@
+class ThreeDKpiReport < ApplicationRecord
+end

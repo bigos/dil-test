@@ -1,0 +1,2 @@
+class DesignAgency < ApplicationRecord
+end

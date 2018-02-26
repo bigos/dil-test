@@ -1,0 +1,2 @@
+class CompletedJobReport < ApplicationRecord
+end

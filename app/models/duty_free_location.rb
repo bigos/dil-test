@@ -1,0 +1,2 @@
+class DutyFreeLocation < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class BOwnersDAgency < ApplicationRecord
+end

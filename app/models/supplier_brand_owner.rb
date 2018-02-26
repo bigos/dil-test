@@ -1,0 +1,2 @@
+class SupplierBrandOwner < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class DfRetailer < ApplicationRecord
+end

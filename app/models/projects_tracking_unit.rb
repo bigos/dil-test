@@ -1,0 +1,2 @@
+class ProjectsTrackingUnit < ApplicationRecord
+end

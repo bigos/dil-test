@@ -1,0 +1,2 @@
+class ProjectCampaign < ApplicationRecord
+end

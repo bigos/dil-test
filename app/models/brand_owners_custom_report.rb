@@ -1,0 +1,2 @@
+class BrandOwnersCustomReport < ApplicationRecord
+end

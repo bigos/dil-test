@@ -1,0 +1,2 @@
+class UserBrandOwner < ApplicationRecord
+end
