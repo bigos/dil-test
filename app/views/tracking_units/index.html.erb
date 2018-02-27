@@ -12,21 +12,21 @@
 
   <%= f.label :location_type %>
   <%= f.select :project_duty_free_location_location_type_cont,
-  DutyFreeLocation.distinct.pluck( :location_type),
-  prompt: 'Any'
+  DutyFreeLocation.location_type_options
 
   %>
   <br>
 
   <%= f.label :region %>
   <%= f.select :project_duty_free_location_region_cont,
-  DutyFreeLocation.distinct.pluck( :region),
-  prompt: 'Any'
+  DutyFreeLocation.region_options
   %>
   <br>
 
   <%= f.label :df_location %>
-  <%= f.search_field :project_duty_free_location_name_cont %>
+  <%= f.select :project_duty_free_location_name_cont,
+  DutyFreeLocation.location_options
+  %>
   <br>
 
   <%= f.label :brand_owner %>
@@ -42,6 +42,7 @@
   <%= f.submit %>
 <% end %>
 
+<%= link_to 'Clear Search Options', tracking_units_path%>
 <hr>
 
 <table>

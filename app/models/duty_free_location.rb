@@ -15,4 +15,19 @@
 
 class DutyFreeLocation < ApplicationRecord
   has_many :projects
+
+  def self.location_type_options
+    [['Any','']] + DutyFreeLocation.distinct.pluck(:location_type)
+                     .collect { |x| [x, x] }
+  end
+
+  def self.region_options
+    [['Any','']] + DutyFreeLocation.distinct.pluck( :region)
+                     .collect { |x| [x, x] }
+  end
+
+  def self.location_options
+    [['Any','']] + DutyFreeLocation.distinct.pluck( :name)
+                     .collect { |x| [x, x] }
+  end
 end
