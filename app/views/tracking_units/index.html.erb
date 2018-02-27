@@ -30,11 +30,15 @@
   <br>
 
   <%= f.label :brand_owner %>
-  <%= f.search_field :brand_brand_owner_name_cont %>
+  <%= f.select :brand_brand_owner_name_cont,
+  BrandOwner.brand_owner_options
+  %>
   <br>
 
-  <%= f.label :brand %>
-  <%= f.search_field :brand_name_cont %>
+  <%= f.label :brand_name %>
+  <%= f.select :brand_name_cont,
+  Brand.brand_options
+  %>
   <br>
 
 

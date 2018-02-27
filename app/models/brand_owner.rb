@@ -18,4 +18,9 @@
 
 class BrandOwner < ApplicationRecord
   has_many :brands
+
+  def self.brand_owner_options
+    [['Any','']] + BrandOwner.pluck( :name)
+                     .collect { |x| [x, x] }
+  end
 end

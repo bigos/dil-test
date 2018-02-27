@@ -27,7 +27,7 @@ class DutyFreeLocation < ApplicationRecord
   end
 
   def self.location_options
-    [['Any','']] + DutyFreeLocation.distinct.pluck( :name)
+    [['Any','']] + DutyFreeLocation.pluck( :name)
                      .collect { |x| [x, x] }
   end
 end

@@ -13,4 +13,9 @@
 class Brand < ApplicationRecord
   belongs_to :brand_owner
   has_many :tracking_units
+
+  def self.brand_options
+    [['Any','']] + Brand.pluck( :name)
+                     .collect { |x| [x, x] }
+  end
 end
