@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'will_paginate', '~> 3.1.1'
+gem 'ransack'
 
 group :development, :test do
   gem 'annotate'
