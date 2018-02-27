@@ -48,15 +48,4 @@ class TrackingUnit < ApplicationRecord
   def region
     project.duty_free_location.region
   end
-
-  ransacker :date_exists do |parent|
-    # SQL syntax for PostgreSQL -- others may differ
-    # This returns boolean true or false
-    Arel.sql("(select exists (select 1 from prices where prices.book_id = books.id))")
-    "SELECT  `scheduler_dates`.* FROM `scheduler_dates`
-INNER JOIN `projects_tracking_units`
-ON `scheduler_dates`.`project_tu_junction_id` = `projects_tracking_units`.`id`
-WHERE `projects_tracking_units`.`tracking_unit_id` = #{self.try(:id)}
-AND ( (scheduler_dates.from >= 2016-09-27) and (scheduler_dates.to <= '2027-09-27' ))"
-  end
 end
