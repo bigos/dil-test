@@ -3,11 +3,15 @@
 <%= search_form_for @q do |f| %>
 
   <%= f.label :date_from %>
-  <%= f.search_field :created_at_gteq %>
+  <%= f.search_field :scheduler_dates_from_gteq,
+  placeholder: 'YYYY-MM-DD'
+  %>
   <br>
 
   <%= f.label :date_to %>
-  <%= f.search_field :created_at_lteq %>
+  <%= f.search_field :scheduler_dates_to_lteq,
+   placeholder: 'YYYY-MM-DD'
+  %>
   <br>
 
   <%= f.label :location_type %>
@@ -43,7 +47,7 @@
 
 
 
-  <%= f.submit %>
+  <%= f.submit 'Filter' , style: 'margin: 0.5em 0 1em  11em' %>
 <% end %>
 
 <%= link_to 'Clear Search Options', tracking_units_path%>
@@ -64,7 +68,7 @@
   <tbody>
     <% @tracking_units.each do |tu| %>
       <tr>
-        <td><%= tu.asset_id %></td>
+        <td><%= link_to tu.asset_id, tracking_unit_url( tu) %></td>
         <td><%= "test" %></td>
         <td><%= tu.brand.try(:brand_owner).try(:name) %></td>
         <td><%= tu.brand.try(:name) %></td>

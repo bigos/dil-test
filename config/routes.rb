@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :tracking_units, only: :index
+  resources :tracking_units, only: [:index, :show]
 
   root to: 'tracking_units#index'
 
