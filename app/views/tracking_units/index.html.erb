@@ -1,0 +1,79 @@
+<h1>Tracting Units</h1>
+
+<%= search_form_for @q do |f| %>
+
+  <%= f.label :date_from %>
+  <%= f.search_field :created_at_gteq %>
+  <br>
+
+  <%= f.label :date_to %>
+  <%= f.search_field :created_at_lteq %>
+  <br>
+
+  <%= f.label :location_type %>
+  <%= f.select :project_duty_free_location_location_type_cont,
+  DutyFreeLocation.location_type_options
+
+  %>
+  <br>
+
+  <%= f.label :region %>
+  <%= f.select :project_duty_free_location_region_cont,
+  DutyFreeLocation.region_options
+  %>
+  <br>
+
+  <%= f.label :df_location %>
+  <%= f.select :project_duty_free_location_name_cont,
+  DutyFreeLocation.location_options
+  %>
+  <br>
+
+  <%= f.label :brand_owner %>
+  <%= f.select :brand_brand_owner_name_cont,
+  BrandOwner.brand_owner_options
+  %>
+  <br>
+
+  <%= f.label :brand_name %>
+  <%= f.select :brand_name_cont,
+  Brand.brand_options
+  %>
+  <br>
+
+
+
+  <%= f.submit %>
+<% end %>
+
+<%= link_to 'Clear Search Options', tracking_units_path%>
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <td>Unit ID</td>
+      <td>Main Image</td>
+      <td>Brand Owner</td>
+      <td>Brand</td>
+      <td>Unit Description</td>
+      <td>Region</td>
+      <td>DF Location</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tracking_units.each do |tu| %>
+      <tr>
+        <td><%= tu.asset_id %></td>
+        <td><%= "test" %></td>
+        <td><%= tu.brand.try(:brand_owner).try(:name) %></td>
+        <td><%= tu.brand.try(:name) %></td>
+        <td><%= tu.unit_description %></td>
+        <td><%= tu.region %></td>
+        <td><%= tu.project.duty_free_location.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @tracking_units %>
