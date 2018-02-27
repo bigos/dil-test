@@ -1,0 +1,64 @@
+<h1>Tracting Units</h1>
+
+<%= search_form_for @q do |f| %>
+
+  One of: "Airport", "Border Shop", "Ferry", "Other" or "Warehouse"
+  <br>
+  <%= f.label :location_type %>
+  <%= f.search_field :project_duty_free_location_location_type_cont %>
+  <br>
+
+
+  ["Africa Middle East", "Americas", "Asia", "Europe", "Multiple"]
+  <br>
+  <%= f.label :region %>
+  <%= f.search_field :project_duty_free_location_region_cont %>
+  <br>
+
+  <%= f.label :df_location %>
+  <%= f.search_field :project_duty_free_location_name_cont %>
+  <br>
+
+  <%= f.label :brand_owner %>
+  <%= f.search_field :brand_brand_owner_name_cont %>
+  <br>
+
+  <%= f.label :brand %>
+  <%= f.search_field :brand_name_cont %>
+  <br>
+
+
+
+  <%= f.submit %>
+<% end %>
+
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <td>Unit ID</td>
+      <td>Main Image</td>
+      <td>Brand Owner</td>
+      <td>Brand</td>
+      <td>Unit Description</td>
+      <td>Region</td>
+      <td>DF Location</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tracking_units.each do |tu| %>
+      <tr>
+        <td><%= tu.asset_id %></td>
+        <td><%= "test" %></td>
+        <td><%= tu.brand.try(:brand_owner).try(:name) %></td>
+        <td><%= tu.brand.try(:name) %></td>
+        <td><%= tu.unit_description %></td>
+        <td><%= tu.region %></td>
+        <td><%= tu.project.duty_free_location.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @tracking_units %>

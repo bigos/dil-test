@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  get 'tracting_units/index'
 
-  get 'tracting_units/show'
+  resources :tracking_units, only: :index
 
-  root to: 'tracting_units#index'
+  root to: 'tracking_units#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

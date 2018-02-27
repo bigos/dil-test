@@ -1,4 +1,4 @@
-class TractingUnitsController < ApplicationController
+class TrackingUnitsController < ApplicationController
 
   # finish me
   # https://github.com/activerecord-hackery/ransack
@@ -9,7 +9,8 @@ class TractingUnitsController < ApplicationController
 
 
     # or use `to_a.uniq` to remove duplicates (can also be done in the view):
-    @tracking_units = @q.result.includes(:brand).paginate(page: params[:page])
+    @tracking_units = @q.result.includes(:brand)
+                        .paginate(page: params[:page], per_page: 10)
 
 
   end
