@@ -42,6 +42,8 @@
 class TrackingUnit < ApplicationRecord
   belongs_to :brand
   belongs_to :project
+  has_many :projects_tracking_units
+  has_many :scheduler_dates, through: :projects_tracking_units
 
   def region
     project.duty_free_location.region

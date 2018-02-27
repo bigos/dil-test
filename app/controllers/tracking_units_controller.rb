@@ -16,6 +16,8 @@ class TrackingUnitsController < ApplicationController
   end
 
   def show
+    @tracking_unit = TrackingUnit.find params[:id]
+    @scheduler_dates = @tracking_unit.scheduler_dates.order('scheduler_dates.to DESC')
   end
 
   private
