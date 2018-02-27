@@ -9,9 +9,9 @@ class TractingUnitsController < ApplicationController
 
 
     # or use `to_a.uniq` to remove duplicates (can also be done in the view):
-    @tracking_units = @q.result.includes(:articles).page(params[:page]).to_a.uniq
+    @tracking_units = @q.result.includes(:brand).paginate(page: params[:page])
 
-    @tracking_units = TrackingUnit.paginate(page: params[:page])
+
   end
 
   def show
