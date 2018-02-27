@@ -2,17 +2,27 @@
 
 <%= search_form_for @q do |f| %>
 
-  One of: "Airport", "Border Shop", "Ferry", "Other" or "Warehouse"
+  <%= f.label :date_from %>
+  <%= f.search_field :created_at_gteq %>
   <br>
+
+  <%= f.label :date_to %>
+  <%= f.search_field :created_at_lteq %>
+  <br>
+
   <%= f.label :location_type %>
-  <%= f.search_field :project_duty_free_location_location_type_cont %>
+  <%= f.select :project_duty_free_location_location_type_cont,
+  DutyFreeLocation.distinct.pluck( :location_type),
+  prompt: 'Any'
+
+  %>
   <br>
 
-
-  ["Africa Middle East", "Americas", "Asia", "Europe", "Multiple"]
-  <br>
   <%= f.label :region %>
-  <%= f.search_field :project_duty_free_location_region_cont %>
+  <%= f.select :project_duty_free_location_region_cont,
+  DutyFreeLocation.distinct.pluck( :region),
+  prompt: 'Any'
+  %>
   <br>
 
   <%= f.label :df_location %>
