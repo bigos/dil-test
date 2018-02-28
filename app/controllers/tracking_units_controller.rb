@@ -17,7 +17,7 @@ class TrackingUnitsController < ApplicationController
     end
 
 
-    @q = SchedulerDate.ransack(params[:q])
+    @q = TrackingUnit.ransack(params[:q])
 
 
     # or use `to_a.uniq` to remove duplicates (can also be done in the view):
