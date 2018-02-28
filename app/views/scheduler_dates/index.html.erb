@@ -1,2 +1,97 @@
 <h1>SchedulerDates#index</h1>
 <p>Find me in app/views/scheduler_dates/index.html.erb</p>
+
+<p>
+  <%= @scheduler_dates.inspect %>
+</p>
+
+<%= search_form_for @q do |f| %>
+
+  <%= f.label :date_from %>
+  <%= f.search_field :from_lteq,
+  placeholder: 'YYYY-MM-DD'
+  %>
+  <br>
+
+  <%= f.label :date_to %>
+  <%= f.search_field :to_gteq,
+  placeholder: 'YYYY-MM-DD'
+  %>
+  <br>
+
+  <%= f.label :location_type %>
+  <%= f.select :projects_tracking_unit_project_duty_free_location_location_type_cont,
+  DutyFreeLocation.location_type_options
+
+  %>
+  <br>
+
+  <%= f.label :region %>
+  <%= f.select :projects_tracking_unit_project_duty_free_location_region_cont,
+  DutyFreeLocation.region_options
+  %>
+  <br>
+
+  <%= f.label :df_location %>
+  <%= f.select :location_cont,
+  DutyFreeLocation.location_options
+  %>
+  <br>
+
+  <%= f.label :brand_owner %>
+  <%= f.select :projects_tracking_unit_tracking_unit_brand_brand_owner_name_cont,
+  BrandOwner.brand_owner_options
+  %>
+  <br>
+
+  <%= f.label :brand_name %>
+  <%= f.select :projects_tracking_unit_tracking_unit_brand_name_cont,
+  Brand.brand_options
+  %>
+  <br>
+
+
+
+  <%= f.submit 'Filter' , style: 'margin: 0.5em 0 1em  11em' %>
+<% end %>
+
+<%= link_to 'Clear Search Options', scheduler_dates_path%>
+<hr>
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Unit ID</td>
+      <td>Main Image</td>
+      <td>Brand Owner</td>
+      <td>Brand</td>
+      <td>Unit Description</td>
+      <td>Region</td>
+      <td>DF Location</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @scheduler_dates.each do |sd| %>
+      <%
+      # TODO: make proper range checking
+      ptu = sd.projects_tracking_unit
+      if ptu
+        tu = ptu.tracking_unit
+        last_location = tu.scheduler_dates.order('scheduler_dates.to DESC').first.location
+      end
+      %>
+      <tr>
+        <td><%= tu ? (link_to tu.asset_id, tracking_unit_url( tu)) : "" %></td>
+        <td><%= "test" %></td>
+        <td><%= tu ? tu.brand.try(:brand_owner).try(:name) : '' %></td>
+        <td><%= tu ? tu.brand.try(:name) : '' %></td>
+        <td><%= tu.try :unit_description %></td>
+        <td><%= last_location ? DutyFreeLocation.where(name: last_location).first.region : '' %></td>
+        <td><%= last_location %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @tracking_units %>
