@@ -76,6 +76,8 @@
       if ptu
         tu = ptu.tracking_unit
         last_location = tu.scheduler_dates.order('scheduler_dates.to DESC').first.location
+      else
+        byebug
       end
       %>
       <tr>
