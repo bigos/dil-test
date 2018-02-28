@@ -2,23 +2,22 @@ class TrackingUnitsController < ApplicationController
 
   def index
     if params['q']
-      params_changed = false
-      dk = 'scheduler_dates_from_gteq'
-      if params['q'][dk].blank?
-        params['q'][dk] = Time.zone.now.strftime('%Y-%m-%d')
-        params_changed = true
-      end
-      dk = 'scheduler_dates_to_lteq'
-      if params['q'][dk].blank?
-        params['q'][dk] = Time.zone.now.strftime('%Y-%m-%d')
-        params_changed = true
+      dfrom = 'scheduler_dates_from_lteq' # must match query in the index
+      if params['q'][dfrom].blank?
+        params['q'][dfrom] = Time.zone.now.strftime('%Y-%m-%d')
+        logger.info("*** modified params q #{dfrom} #{params[:q][dfrom].inspect}")
       end
 
-      logger.info("*** modified params #{params.inspect}") if params_changed
+      dto = 'scheduler_dates_to_gteq'  # must match query in the index
+      if params['q'][dto].blank?
+        params['q'][dto] = Time.zone.now.strftime('%Y-%m-%d')
+        logger.info("*** modified params q #{dto} #{params[:q][dto].inspect}")
+      end
+
     end
 
 
-    @q = TrackingUnit.ransack(params[:q])
+    @q = SchedulerDate.ransack(params[:q])
 
 
     # or use `to_a.uniq` to remove duplicates (can also be done in the view):
