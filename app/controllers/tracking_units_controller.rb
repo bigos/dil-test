@@ -1,10 +1,23 @@
 class TrackingUnitsController < ApplicationController
 
-  # finish me
-  # https://github.com/activerecord-hackery/ransack
-  # https://github.com/activerecord-hackery/ransack_demo/blob/master/app/models/user.rb
-
   def index
+    if params['q']
+      params_changed = false
+      dk = 'scheduler_dates_from_gteq'
+      if params['q'][dk].blank?
+        params['q'][dk] = Time.zone.now.strftime('%Y-%m-%d')
+        params_changed = true
+      end
+      dk = 'scheduler_dates_to_lteq'
+      if params['q'][dk].blank?
+        params['q'][dk] = Time.zone.now.strftime('%Y-%m-%d')
+        params_changed = true
+      end
+
+      logger.info("*** modified params #{params.inspect}") if params_changed
+    end
+
+
     @q = TrackingUnit.ransack(params[:q])
 
 
