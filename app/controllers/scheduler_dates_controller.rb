@@ -1,6 +1,19 @@
 class SchedulerDatesController < ApplicationController
   def index
+    if params['q']
+      dfrom = 'from_lteq' # must match query in the index
+      if params['q'][dfrom].blank?
+        params['q'][dfrom] = Time.zone.now.strftime('%Y-%m-%d')
+        logger.info("*** modified params q #{dfrom} #{params[:q][dfrom].inspect}")
+      end
 
+      dto = 'to_gteq'  # must match query in the index
+      if params['q'][dto].blank?
+        params['q'][dto] = Time.zone.now.strftime('%Y-%m-%d')
+        logger.info("*** modified params q #{dto} #{params[:q][dto].inspect}")
+      end
+
+    end
     @q = SchedulerDate.ransack(params[:q])
 
 
