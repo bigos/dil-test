@@ -1,3 +1,15 @@
+require 'yaml'
+
+# We have to upload the secrets file for this to work
+# sftp rails@SERVER-IP_NUMBER <- execute to connect to server
+# use help to display help
+# use lpwd, lcd and lls to traverse local directories
+# use pwd, cd, and ls to traverse remote directories
+# put secrets.yml <- execute to upload the secrets file
+
+secrets = YAML.load_file('/home/rails/rails_project/config/secrets.yml')
+deployment = secrets['deployment']
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
@@ -6,7 +18,7 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-
+server "#{deployment['rails_prod_server']}", user: "rails", roles: %w{app db web}
 
 
 # role-based syntax
