@@ -84,7 +84,7 @@
         <td><%= tu ? tu.brand.try(:brand_owner).try(:name) : '' %></td>
         <td><%= tu ? tu.brand.try(:name) : '' %></td>
         <td><%= tu.try :unit_description %></td>
-        <td><%= last_location ? DutyFreeLocation.where(name: last_location).first.region : '' %></td>
+        <td><%= last_location ? DutyFreeLocation.where(name: last_location).try(:first).try(:region) : '' %></td>
         <td><%= last_location %></td>
       </tr>
     <% end %>
