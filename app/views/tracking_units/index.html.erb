@@ -1,56 +1,58 @@
 <h1>Tracking Units</h1>
 
-<%= search_form_for @q do |f| %>
+<%= search_form_for @q, url: scheduler_dates_path  do |f| %>
+
 
   <%= f.label :date_from %>
-  <%= f.search_field :scheduler_dates_from_lteq,
+  <%= f.search_field :from_lteq,
   placeholder: 'YYYY-MM-DD'
   %>
   <br>
 
   <%= f.label :date_to %>
-  <%= f.search_field :scheduler_dates_to_gteq,
-   placeholder: 'YYYY-MM-DD'
+  <%= f.search_field :to_gteq,
+  placeholder: 'YYYY-MM-DD'
   %>
   <br>
 
   <%= f.label :location_type %>
-  <%= f.select :project_duty_free_location_location_type_cont,
+  <%= f.select :projects_tracking_unit_project_duty_free_location_location_type_cont,
   DutyFreeLocation.location_type_options
 
   %>
   <br>
 
   <%= f.label :region %>
-  <%= f.select :project_duty_free_location_region_cont,
+  <%= f.select :projects_tracking_unit_project_duty_free_location_region_cont,
   DutyFreeLocation.region_options
   %>
   <br>
 
   <%= f.label :df_location %>
-  <%= f.select :scheduler_dates_location_cont,
+  <%= f.select :location_cont,
   DutyFreeLocation.location_options
   %>
   <br>
 
   <%= f.label :brand_owner %>
-  <%= f.select :brand_brand_owner_name_cont,
+  <%= f.select :projects_tracking_unit_tracking_unit_brand_brand_owner_name_cont,
   BrandOwner.brand_owner_options
   %>
   <br>
 
   <%= f.label :brand_name %>
-  <%= f.select :brand_name_cont,
+  <%= f.select :projects_tracking_unit_tracking_unit_brand_name_cont,
   Brand.brand_options
   %>
   <br>
 
 
 
+
   <%= f.submit 'Filter' , style: 'margin: 0.5em 0 1em  11em' %>
 <% end %>
 
-<%= link_to 'Clear Search Options', tracking_units_path%>
+
 <hr>
 
 <table>

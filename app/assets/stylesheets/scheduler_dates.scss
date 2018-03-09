@@ -1,3 +1,18 @@
 // Place all the styles related to the SchedulerDates controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+thead {
+  background: #444;
+  color:white;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #ddd;
+}
+
+td
+{padding: 0.5em
+   }
