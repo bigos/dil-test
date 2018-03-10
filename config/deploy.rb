@@ -11,6 +11,7 @@ set :repo_url, 'git@github.com:bigos/dil-test.git'
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/home/rails/rails_project'
+set :default_env, rvm_bin_path: '/usr/local/rvm/bin'
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -83,7 +84,7 @@ namespace :puma do
     end
   end
 
-  before :start, :make_dirs
+  #before :start, :make_dirs
 end
 
 namespace :deploy do
@@ -113,7 +114,15 @@ namespace :deploy do
     end
   end
 
+  desc 'Set config/puma.rb-symlink for upstart'
+  task :pumaconfigln do
+    on roles(:app) do
+      execute "ln -s #{sharedpath}/puma.rb #{fetch(:deployto)}/current/config/puma.rb"
+    end
+  end
+
   before :starting,     :check_revision
+  after  :finishing,    :pumaconfigln
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
