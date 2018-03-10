@@ -1,14 +1,4 @@
-require 'yaml'
-
-# We have to upload the secrets file for this to work
-# sftp rails@SERVER-IP_NUMBER <- execute to connect to server
-# use help to display help
-# use lpwd, lcd and lls to traverse local directories
-# use pwd, cd, and ls to traverse remote directories
-# put secrets.yml <- execute to upload the secrets file
-
-secrets = YAML.load_file('/home/rails/rails_project/config/secrets.yml')
-deployment = secrets['deployment']
+deployment = fetch(:secrets)['deployment']
 
 # server-based syntax
 # ======================

@@ -1,6 +1,8 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.10.1"
 
+set :secrets, YAML.load_file("#{File.dirname(__FILE__)}/secrets.yml")
+
 set :application, "dil-test"
 set :repo_url, "git@github.com:bigos/dil-test.git"
 
