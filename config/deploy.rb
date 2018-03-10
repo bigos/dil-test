@@ -11,7 +11,6 @@ set :repo_url, 'git@github.com:bigos/dil-test.git'
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/home/rails/rails_project'
-set :default_env, rvm_bin_path: '/usr/local/rvm/bin'
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
