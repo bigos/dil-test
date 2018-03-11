@@ -25,7 +25,7 @@ set :deploy_to, '/home/rails/rails_project'
 set :format, :pretty
 
 # Default value for :linked_files is []
-append :linked_files, 'config/database.yml', 'config/secrets.yml'
+append :linked_files, 'config/database.yml', 'config/secrets.yml', 'config/puma.rb'
 
 # Default value for linked_dirs is []
 append :linked_dirs, 'bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets',
@@ -113,15 +113,15 @@ namespace :deploy do
     end
   end
 
-  # desc 'Set config/puma.rb-symlink for upstart'
-  # task :pumaconfigln do
-  #   on roles(:app) do
-  #     execute "ln -s #{shared_path}/puma.rb #{fetch(:deployto)}/current/config/puma.rb"
-  #   end
-  # end
+  desc 'Set config/puma.rb-symlink for upstart'
+  task :pumaconfigln do
+    on roles(:app) do
+      execute "ln -s #{shared_path}/puma.rb #{fetch(:deployto)}/current/config/puma.rb"
+    end
+  end
 
   before :starting,     :check_revision
-  after  :finishing,    :pumaconfigln
+  #after  :finishing,    :pumaconfigln
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
