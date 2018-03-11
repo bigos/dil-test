@@ -24,4 +24,5 @@
 #
 
 class SupplierContact < ApplicationRecord
+  establish_connection :external
 end

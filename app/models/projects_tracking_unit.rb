@@ -11,6 +11,7 @@
 #
 
 class ProjectsTrackingUnit < ApplicationRecord
+  establish_connection :external
   belongs_to :tracking_unit
   belongs_to :project
   has_one :scheduler_date, foreign_key: 'project_tu_junction_id'

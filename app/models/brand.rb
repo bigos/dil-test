@@ -11,6 +11,7 @@
 #
 
 class Brand < ApplicationRecord
+  establish_connection :external
   belongs_to :brand_owner
   has_many :tracking_units
 

@@ -133,6 +133,7 @@
 #
 
 class Project < ApplicationRecord
+  establish_connection :external
   belongs_to :duty_free_location
   has_many :tracking_units
   has_many :projects_tracking_units
