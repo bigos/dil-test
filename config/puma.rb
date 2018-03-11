@@ -4,16 +4,19 @@
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum; this matches the default thread size of Active Record.
 #
-threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
+threads_count = ENV.fetch('RAILS_MAX_THREADS') { 5 }
 threads threads_count, threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
-#
-port        ENV.fetch("PORT") { 3000 }
+port ENV.fetch('PORT') { 3000 }
 
 # Specifies the `environment` that Puma will run in.
-#
-environment ENV.fetch("RAILS_ENV") { "development" }
+environment ENV.fetch('RAILS_ENV') { 'development' }
+
+# capistrano will upload different configuration to the server
+# running
+# cap production puma:config
+# will upload different configuration to the expected location
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
@@ -22,12 +25,6 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 # processes).
 #
 workers ENV.fetch('WEB_CONCURRENCY') { 1 }
-
-# Set up socket location
-app_dir = File.expand_path('../..', __FILE__)
-shared_dir = "#{app_dir}/shared"
-#bind "unix://#{shared_dir}/sockets/puma.sock"
-#pidfile "#{shared_dir}/tmp/pids"
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code
