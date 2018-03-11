@@ -67,6 +67,13 @@ set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, false  # Change to true if using ActiveRecord
 
+# To upload a nginx site config (eg. /etc/nginx/sites-enabled/) use:
+# cap production puma:nginx_config
+# TODO:
+# the config file is uploaded to /tmp, you have to move it manually
+# needs checking why it does it
+set :nginx_config_name, fetch(:application).to_s
+
 ## Defaults:
 # set :scm,           :git
 # set :branch,        :master
