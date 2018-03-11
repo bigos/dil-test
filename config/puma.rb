@@ -26,8 +26,8 @@ workers ENV.fetch('WEB_CONCURRENCY') { 1 }
 # Set up socket location
 app_dir = File.expand_path('../..', __FILE__)
 shared_dir = "#{app_dir}/shared"
-bind "unix://#{shared_dir}/sockets/puma.sock"
-pidfile "#{shared_dir}/tmp/pids"
+#bind "unix://#{shared_dir}/sockets/puma.sock"
+#pidfile "#{shared_dir}/tmp/pids"
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code
