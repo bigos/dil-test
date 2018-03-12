@@ -14,9 +14,14 @@
 
     <%= yield %>
     <hr>
+    <% if current_user %>
     <p>
       Logged in user:
-      <%= current_user.try :email %>
+      <%= current_user.email %>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
     </p>
+    <% else %>
+    <p>Not logged in</p>
+    <% end %>
   </body>
 </html>
