@@ -62,7 +62,9 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "dil-test_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: '178.62.96.175', port: 3000 }
+  config.action_mailer.default_url_options = { host: Rails.application.secrets
+                                                          .rails_server_ip,
+                                               port: 3000 }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

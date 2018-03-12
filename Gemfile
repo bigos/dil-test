@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'ransack'
 gem 'will_paginate', '~> 3.1.1'
+gem 'byebug'
 
 group :development, :test do
   gem 'annotate'
