@@ -9,6 +9,14 @@
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
+    <hr>
+    <p>
+      Logged in user:
+      <%= current_user.try :email %>
+    </p>
   </body>
 </html>
