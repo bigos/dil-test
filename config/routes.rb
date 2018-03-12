@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  devise_for :users
   resources :tracking_units, only: [:index, :show]
 
   resources :scheduler_dates, only: [:index]
