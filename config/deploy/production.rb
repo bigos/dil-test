@@ -8,8 +8,7 @@ deployment = fetch(:secrets)['deployment']
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-server "#{deployment['rails_prod_server']}", user: "rails", roles: %w{app db web}
-
+server "#{deployment['rails_server_ip']}", user: "rails", roles: %w{app db web}
 
 # role-based syntax
 # ==================
