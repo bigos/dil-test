@@ -26,6 +26,9 @@
 #
 
 class User < ApplicationRecord
+  # user is on the different database defined in authentication section
+  establish_connection :authentication
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
