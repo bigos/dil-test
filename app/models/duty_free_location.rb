@@ -14,7 +14,6 @@
 #
 
 class DutyFreeLocation < ApplicationRecord
-  establish_connection :external
   has_many :projects
 
   def self.location_type_options

@@ -40,7 +40,6 @@
 #
 
 class TrackingUnit < ApplicationRecord
-  establish_connection :external
   belongs_to :brand
   belongs_to :project
   has_many :projects_tracking_units

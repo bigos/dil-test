@@ -11,5 +11,4 @@
 #
 
 class Zone < ApplicationRecord
-  establish_connection :external
 end

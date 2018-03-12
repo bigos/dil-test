@@ -12,6 +12,5 @@
 #
 
 class SchedulerDate < ApplicationRecord
-  establish_connection :external
   belongs_to :projects_tracking_unit, foreign_key: 'project_tu_junction_id'
 end

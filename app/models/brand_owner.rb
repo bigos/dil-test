@@ -17,7 +17,6 @@
 #
 
 class BrandOwner < ApplicationRecord
-  establish_connection :external
   has_many :brands
 
   def self.brand_owner_options
