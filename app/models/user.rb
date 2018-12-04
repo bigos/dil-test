@@ -26,4 +26,5 @@
 #
 
 class User < ApplicationRecord
+  # check the other branch for use with two databases
 end
