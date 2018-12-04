@@ -27,6 +27,7 @@
 
 class User < ApplicationRecord
   # user is on the different database defined in authentication section
+  # this is the solution of my problem
   establish_connection :authentication
 
   # Include default devise modules. Others available are:
